@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+  color: var(--textSoft);
+}
+
+.logo {
+  font-weight: bold;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  font-style: 12px;
+}

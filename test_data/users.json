@@ -1,0 +1,35 @@
+[
+  {
+    "firstname": "Ben",
+    "lastname": "Temperton",
+    "email": "btemperton@gmail.com",
+    "password": "password",
+    "img": "https://ca.slack-edge.com/T23178NAJ-U2314Q6HJ-5a44369094f2-512",
+    "isActive": true,
+    "roles": ["administrator", "hunter", "researcher", "auditor"]
+  },
+  {
+    "firstname": "Julie",
+    "lastname": "Fletcher",
+    "email": "jf@gmail.com",
+    "password": "password",
+    "isActive": true,
+    "roles": ["researcher"]
+  },
+  {
+    "firstname": "Remy",
+    "lastname": "Chait",
+    "email": "R.Chait@exeter.ac.uk",
+    "password": "password",
+    "isActive": true,
+    "roles": ["hunter"]
+  },
+  {
+    "firstname": "Jason",
+    "lastname": "Sturgess",
+    "email": "js@gmail.com",
+    "password": "password",
+    "isActive": false,
+    "roles": ["researcher"]
+  }
+]

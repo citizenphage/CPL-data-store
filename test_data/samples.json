@@ -1,0 +1,163 @@
+[
+  {
+    "type": "freshwater",
+    "isCitizenSample": "true",
+    "w3w": "tadpoles.tips.rings",
+    "kit_number": "K-00211",
+    "hunter": "669f6aa9c9955c232b7c7833",
+    "event": "March 2024 CPL website mailout",
+    "date_taken": "2024-05-06",
+    "description": "unknown",
+    "status": "filtered",
+    "processes": [
+      {
+        "name": "centrifuged",
+        "date": "2024-05-10",
+        "user": "Julie Fletcher",
+        "method_uri": "https://doi.org/10.3390/microorganisms12020253"
+      },
+      {
+        "name": "stored",
+        "date": "2024-05-10",
+        "user": "Julie Fletcher",
+        "method_uri": "https://doi.org/10.3390/microorganisms12020253",
+        "assigned_number": "688",
+        "temperature": "4°C",
+        "storage_location": "GP fourth floor cold room"
+      }
+    ],
+    "phage_hunts": []
+  },
+  {
+    "type": "wastewater",
+    "isCitizenSample": "false",
+    "date_taken": "2024-05-08",
+    "description": "Environment Agency sourced",
+    "status": "stored",
+    "processes": [],
+    "phage_hunts": []
+  },
+  {
+    "type": "freshwater",
+    "isCitizenSample": "true",
+    "w3w": "endearing.tripling.called",
+    "kit_number": "Sample Kit Bridgwater College",
+    "hunter": "",
+    "event": "",
+    "date_taken": "2021-12-04",
+    "description": "taken from a moat",
+    "status": "filtered",
+    "processes": [
+      {
+        "name": "received",
+        "date": "2021-12-06",
+        "user": "Julie Fletcher",
+        "method_uri": "https://doi.org/10.3390/microorganisms12020253"
+      },
+      {
+        "name": "centrifuged",
+        "date": "2021-12-06",
+        "user": "Julie Fletcher",
+        "method_uri": "https://doi.org/10.3390/microorganisms12020253"
+      },
+      {
+        "name": "filtered",
+        "date": "2021-12-06",
+        "user": "Julie Fletcher",
+        "method_uri": "https://doi.org/10.3390/microorganisms12020253"
+      },
+      {
+        "name": "stored",
+        "date": "2021-12-06",
+        "user": "Julie Fletcher",
+        "method_uri": "https://doi.org/10.3390/microorganisms12020253",
+        "temperature": "4°C",
+        "storage_location": "GP fourth floor cold room",
+        "assigned_number": "303"
+      }
+    ],
+    "phage_hunts": []
+  },
+  {
+    "type": "freshwater",
+    "isCitizenSample": "true",
+    "w3w": "putty.wasp.natively",
+    "kit_number": "Remy",
+    "hunter": "Remy Chait",
+    "event": "UofE",
+    "date_taken": "2021-11-06",
+    "description": "unknown",
+    "status": "filtered",
+    "processes": [
+      {
+        "name": "received",
+        "date": "2021-11-08",
+        "user": "Julie Fletcher",
+        "method_uri": "https://doi.org/10.3390/microorganisms12020253"
+      },
+      {
+        "name": "centrifuged",
+        "date": "2021-11-15",
+        "user": "Jason Sturgess",
+        "method_uri": "https://doi.org/10.3390/microorganisms12020253"
+      },
+      {
+        "name": "filtered",
+        "date": "2021-11-15",
+        "user": "Jason Sturgess",
+        "method_uri": "https://doi.org/10.3390/microorganisms12020253"
+      },
+      {
+        "name": "stored",
+        "date": "2021-11-15",
+        "user": "Jason Sturgess",
+        "method_uri": "https://doi.org/10.3390/microorganisms12020253",
+        "temperature": "4°C",
+        "storage_location": "GP fourth floor cold room",
+        "assigned_number": "199"
+      }
+    ],
+    "phage_hunts": []
+  },
+  {
+    "type": "freshwater",
+    "isCitizenSample": "true",
+    "w3w": "charmingly.kicked.zoom",
+    "kit_number": "Remy",
+    "hunter": "Remy Chait",
+    "event": "UofE",
+    "date_taken": "2021-11-06",
+    "description": "unknown",
+    "status": "filtered",
+    "processes": [
+      {
+        "name": "received",
+        "date": "2021-11-08",
+        "user": "Julie Fletcher",
+        "method_uri": "https://doi.org/10.3390/microorganisms12020253"
+      },
+      {
+        "name": "centrifuged",
+        "date": "2021-11-15",
+        "user": "Jason Sturgess",
+        "method_uri": "https://doi.org/10.3390/microorganisms12020253"
+      },
+      {
+        "name": "filtered",
+        "date": "2021-11-15",
+        "user": "Jason Sturgess",
+        "method_uri": "https://doi.org/10.3390/microorganisms12020253"
+      },
+      {
+        "name": "stored",
+        "date": "2021-11-15",
+        "user": "Jason Sturgess",
+        "method_uri": "https://doi.org/10.3390/microorganisms12020253",
+        "temperature": "4°C",
+        "storage_location": "GP fourth floor cold room",
+        "assigned_number": "171"
+      }
+    ],
+    "phage_hunts": []
+  }
+]

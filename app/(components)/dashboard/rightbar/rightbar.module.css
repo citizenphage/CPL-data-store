@@ -1,0 +1,60 @@
+.container {
+  position: fixed;
+}
+
+.item {
+  position: relative;
+  background-color: linear-gradient(to top, #182237, #253352);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.bgContainer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+}
+
+.bg {
+  object-fit: contain;
+  opacity: 0.2;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.notification {
+  font-weight: bold;
+}
+
+.title {
+  font-weight: 500;
+  font-style: 12px;
+  color: var(--textSoft);
+}
+
+.subtitle {
+}
+
+.description {
+  color: var(--textSoft);
+}
+.button {
+  margin-top: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: 10px;
+  background-color: #5d57c9;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: max-content;
+}

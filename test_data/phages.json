@@ -1,0 +1,1068 @@
+[
+  {
+    "version": "1.0.0",
+    "name": {
+      "full_name": "Pseudomonas phage CPL00162",
+      "short_name": "CPL00162"
+    },
+    "visibility": "internal",
+    "status": "sequenced",
+    "processes": [],
+    "source": {
+      "isolation_host": {
+        "name": "Pseudomonas aeruginosa PAO1",
+        "isolated_from": "endearing.tripling.called"
+      }
+    },
+    "sequencing": {
+      "date_sequenced": "2022-03-15",
+      "sequencing_center": "University of Exeter",
+      "sequencing_type": "2 x 150 bp",
+      "number_of_reads": 15694348,
+      "total_bp": 2249191816,
+      "reads": {
+        "read_url": [
+          "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/reads/CPL00162/orig_reads/CPL00162-fwd.qc.fq.gz",
+          "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/reads/CPL00162/orig_reads/CPL00162-fwd.qc.fq.gz"
+        ],
+        "read_qc_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00162/01_reads/orig_reads/qc-report.tgz"
+      },
+      "host_removal": {
+        "host_genome": "Pseudomonas aeruginosa PAO1",
+        "genome_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00162/01_reads/host-mapping/host.fa",
+        "mapping": {
+          "total_mapped_count": "7272",
+          "total_unmapped_count": "15685592",
+          "total_mapped_bp": "1054360",
+          "total_unmapped_bp": "2247916127",
+          "pct_mapped_count": "0.046",
+          "pct_mapped_bp": "0.047",
+          "mapped_reads_bam_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00162/01_reads/host-mapping/host-mapped-reads.bam"
+        }
+      }
+    },
+    "assemblies": [
+      {
+        "assembler": "shovill",
+        "assembler_version": "1.1.0",
+        "command": "--minlen 10000 --depth 500 --mincov 20 --keepfiles --cpus {threads} --force --noreadcorr",
+        "subsampled_coverage": "500",
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00162/02_assembly/shovill/CPL00162-shovill-contigs.fa.gz",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00162/02_assembly/shovill/CPL00162-shovill-contigs.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "contig00001",
+            "new_name": "CPL00162",
+            "length": "66016"
+          }
+        ]
+      },
+      {
+        "assembler": "unicycler",
+        "assembler_version": "0.5.0",
+        "command": "--min_fasta_length 1000",
+        "subsampled_coverage": "500",
+        "subsampled_method": {
+          "program_name": "shovill",
+          "program_version": "1.1.0",
+          "command": "--minlen 10000 --depth 500 --mincov 20 --keepfiles --cpus {threads} --force --noreadcorr"
+        },
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00162/02_assembly/unicycler/shovill-reads/contigs.fa",
+        "bandage_png": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00162/02_assembly/unicycler/shovill-reads/CPL00162-shovill-bandage.png",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00162/02_assembly/unicycler/shovill-reads/bandage.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "1",
+            "new_name": "CPL00162",
+            "length": "65925"
+          }
+        ]
+      },
+      {
+        "assembler": "unicycler",
+        "assembler_version": "0.5.0",
+        "command": "--min_fasta_length 1000",
+        "subsampled_coverage": "1pc",
+        "subsampled_method": {
+          "program_name": "seqtk",
+          "program_version": "1.3",
+          "command": "seqtk sample {input.fwd} 0.01  | pigz --fast -c -p 16 > {output.sub_fwd}"
+        },
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00162/02_assembly/unicycler/1pc/contigs.fa",
+        "bandage_png": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00162/02_assembly/unicycler/1pc/CPL00162-1pc-bandage.png",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00162/02_assembly/unicycler/1pc/bandage.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "1",
+            "new_name": "CPL00162-1pc",
+            "length": "65925"
+          }
+        ]
+      }
+    ],
+    "purity": {
+      "total_mapped_count": "15655196",
+      "total_unmapped_count": "39152",
+      "total_mapped_bp": "2243616808",
+      "total_unmapped_bp": "5575008",
+      "pct_mapped_count": "99.751",
+      "pct_mapped_bp": "99.752"
+    },
+    "viral_contigs": {
+      "selected_contig_name": "CPL00162",
+      "selected_contig_length": 65925,
+      "checkv": {
+        "version": "1.0.1",
+        "command": "checkv end_to_end {input.assembly} scratch/{wildcards.sample}/shovill-checkv -t {threads} -d {input.db}/checkv-db-v* --remove_tmp",
+        "contigs": [
+          {
+            "name": "CPL00162",
+            "quality": "High-quality",
+            "estimated_completeness": "99.80"
+          }
+        ]
+      },
+      "gene_calling": {
+        "program_used": "pharokka + phold",
+        "program_version": "1.7.1",
+        "command": "-g prodigal --force --dnaapler",
+        "genbank_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00162/05_annotation/CPL00162/phold.gbk",
+        "plot_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00162/05_annotation/CPL00162/phold.png"
+      },
+      "lifestyle": {
+        "predicted_lifestyle": "virulent",
+        "prediction_methods": [
+          {
+            "program_name": "PhageLeads",
+            "program_version": "https://doi.org/10.3390/v14020342",
+            "command": "https://phageleads.ku.dk/",
+            "result": "virulent"
+          }
+        ]
+      },
+      "genes_of_concern": {
+        "predicted_genes_of_concern": [],
+        "prediction_methods": [
+          {
+            "method": "vfdb",
+            "command": "pharokka.py -i {input.contigs} -o scratch/{wildcards.sample}/pharokka-unicycler -d {input.db} -t {threads} -l {wildcards.sample} -g prodigal --force --dnaapler --prefix {wildcards.sample}"
+          },
+          {
+            "method": "card",
+            "command": "pharokka.py -i {input.contigs} -o scratch/{wildcards.sample}/pharokka-unicycler -d {input.db} -t {threads} -l {wildcards.sample} -g prodigal --force --dnaapler --prefix {wildcards.sample}"
+          }
+        ]
+      },
+      "genome_coverage": {
+        "assembly_average_coverage": "7209.9",
+        "assembly_bam_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00162/06_coverage/CPL00162/assembly-mapped-reads.bam",
+        "assembly_coverage_plot_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00162/06_coverage/CPL00162/coverage-CPL00162.png"
+      },
+      "variants": {
+        "program_name": "snippy",
+        "program_version": "4.6.0",
+        "command": "snippy --cpus 16",
+        "full_read_bam_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00162/07_variants/CPL00162/snps.bam",
+        "variants": []
+      },
+      "phylogeny": {
+        "estimated_distance": 0.0132087,
+        "estimated_distance_method": "mash",
+        "database_name": "inphared",
+        "database_version": "1Aug2023",
+        "name": "MT119368.1 Pseudomonas phage shane, complete genome",
+        "accession_number": "MT119368",
+        "taxonomy": "Viruses; Duplodnaviria; Heunggongvirae; Uroviricota; Caudoviricetes; Pbunavirus; Pbunavirus DP1"
+      }
+    },
+    "receptors": ["LPS", "Type IV pili"]
+  },
+  {
+    "version": "1.0.0",
+    "name": {
+      "full_name": "Pseudomonas phage SlinkyKevin CPL00280",
+      "short_name": "CPL00280"
+    },
+    "visibility": "internal",
+    "status": "sequenced",
+    "processes": [],
+    "source": {
+      "isolation_host": {
+        "name": "Pseudomonas aeruginosa PAO1",
+        "isolated_from": "Environment Agency Wastewater"
+      }
+    },
+    "sequencing": {
+      "date_sequenced": "2022-08-01",
+      "sequencing_center": "University of Exeter",
+      "sequencing_type": "2 x 150 bp",
+      "number_of_reads": 8707910,
+      "total_bp": 1280664926,
+      "reads": {
+        "read_url": [
+          "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/reads/CPL00280/orig_reads/CPL00280-fwd.qc.fq.gz",
+          "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/reads/CPL00280/orig_reads/CPL00280-fwd.qc.fq.gz"
+        ],
+        "read_qc_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00280/01_reads/orig_reads/qc-report.tgz"
+      },
+      "host_removal": {
+        "host_genome": "Pseudomonas aeruginosa PAO1",
+        "genome_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00280/01_reads/host-mapping/host.fa",
+        "mapping": {
+          "total_mapped_count": "1298",
+          "total_unmapped_count": "8706124",
+          "total_mapped_bp": "192394",
+          "total_unmapped_bp": "1280401130",
+          "pct_mapped_count": "0.015",
+          "pct_mapped_bp": "0.015",
+          "mapped_reads_bam_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00280/01_reads/host-mapping/host-mapped-reads.bam"
+        }
+      }
+    },
+    "assemblies": [
+      {
+        "assembler": "shovill",
+        "assembler_version": "1.1.0",
+        "command": "--minlen 10000 --depth 500 --mincov 20 --keepfiles --cpus {threads} --force --noreadcorr",
+        "subsampled_coverage": "500",
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00280/02_assembly/shovill/CPL00280-shovill-contigs.fa.gz",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00280/02_assembly/shovill/CPL00280-shovill-contigs.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "contig00001",
+            "new_name": "CPL00280",
+            "length": "65912"
+          }
+        ]
+      },
+      {
+        "assembler": "unicycler",
+        "assembler_version": "0.5.0",
+        "command": "--min_fasta_length 1000",
+        "subsampled_coverage": "500",
+        "subsampled_method": {
+          "program_name": "shovill",
+          "program_version": "1.1.0",
+          "command": "--minlen 10000 --depth 500 --mincov 20 --keepfiles --cpus {threads} --force --noreadcorr"
+        },
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00280/02_assembly/unicycler/shovill-reads/contigs.fa",
+        "bandage_png": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00280/02_assembly/unicycler/shovill-reads/CPL00280-shovill-bandage.png",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00280/02_assembly/unicycler/shovill-reads/bandage.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "1",
+            "new_name": "CPL00280",
+            "length": "65821"
+          }
+        ]
+      },
+      {
+        "assembler": "unicycler",
+        "assembler_version": "0.5.0",
+        "command": "--min_fasta_length 1000",
+        "subsampled_coverage": "1pc",
+        "subsampled_method": {
+          "program_name": "seqtk",
+          "program_version": "1.3",
+          "command": "seqtk sample {input.fwd} 0.01  | pigz --fast -c -p 16 > {output.sub_fwd}"
+        },
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00280/02_assembly/unicycler/1pc/contigs.fa",
+        "bandage_png": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00280/02_assembly/unicycler/1pc/CPL00280-1pc-bandage.png",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00280/02_assembly/unicycler/1pc/bandage.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "1",
+            "new_name": "CPL00280-1pc",
+            "length": "65821"
+          }
+        ]
+      }
+    ],
+    "purity": {
+      "total_mapped_count": "8585171",
+      "total_unmapped_count": "122739",
+      "total_mapped_bp": "1265782779",
+      "total_unmapped_bp": "14882147",
+      "pct_mapped_count": "98.590",
+      "pct_mapped_bp": "98.838"
+    },
+    "viral_contigs": {
+      "selected_contig_name": "CPL00280",
+      "selected_contig_length": 65821,
+      "checkv": {
+        "version": "1.0.1",
+        "command": "checkv end_to_end {input.assembly} scratch/{wildcards.sample}/shovill-checkv -t {threads} -d {input.db}/checkv-db-v* --remove_tmp",
+        "contigs": [
+          {
+            "name": "CPL00280",
+            "quality": "High-quality",
+            "estimated_completeness": "99.65"
+          }
+        ]
+      },
+      "gene_calling": {
+        "program_used": "pharokka + phold",
+        "program_version": "1.7.1",
+        "command": "-g prodigal --force --dnaapler",
+        "genbank_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00280/05_annotation/CPL00280/phold.gbk",
+        "plot_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00280/05_annotation/CPL00280/phold.png"
+      },
+      "lifestyle": {
+        "predicted_lifestyle": "virulent",
+        "prediction_methods": [
+          {
+            "program_name": "PhageLeads",
+            "program_version": "https://doi.org/10.3390/v14020342",
+            "command": "https://phageleads.ku.dk/",
+            "result": "virulent"
+          }
+        ]
+      },
+      "genes_of_concern": {
+        "predicted_genes_of_concern": [],
+        "prediction_methods": [
+          {
+            "method": "vfdb",
+            "command": "pharokka.py -i {input.contigs} -o scratch/{wildcards.sample}/pharokka-unicycler -d {input.db} -t {threads} -l {wildcards.sample} -g prodigal --force --dnaapler --prefix {wildcards.sample}"
+          },
+          {
+            "method": "card",
+            "command": "pharokka.py -i {input.contigs} -o scratch/{wildcards.sample}/pharokka-unicycler -d {input.db} -t {threads} -l {wildcards.sample} -g prodigal --force --dnaapler --prefix {wildcards.sample}"
+          }
+        ]
+      },
+      "genome_coverage": {
+        "assembly_average_coverage": "3988.1",
+        "assembly_bam_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00280/06_coverage/CPL00280/assembly-mapped-reads.bam",
+        "assembly_coverage_plot_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00280/06_coverage/CPL00280/coverage-CPL00280.png"
+      },
+      "variants": {
+        "program_name": "snippy",
+        "program_version": "4.6.0",
+        "command": "snippy --cpus 16",
+        "full_read_bam_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00280/07_variants/CPL00280/snps.bam",
+        "variants": []
+      },
+      "phylogeny": {
+        "estimated_distance": 0.0178909,
+        "estimated_distance_method": "mash",
+        "database_name": "inphared",
+        "database_version": "1Aug2023",
+        "name": "KR054033.1 Pseudomonas phage DL68, complete genome",
+        "accession_number": "KR054033",
+        "taxonomy": "Viruses; Duplodnaviria; Heunggongvirae; Uroviricota; Caudoviricetes; Pbunavirus; Pseudomonas virus DL68"
+      }
+    },
+    "receptors": ["LPS outer core"]
+  },
+  {
+    "version": "1.0.0",
+    "name": {
+      "full_name": "Pseudomonas phage HairPpipe CPL00273",
+      "short_name": "CPL00273"
+    },
+    "visibility": "internal",
+    "status": "sequenced",
+    "processes": [],
+    "source": {
+      "isolation_host": {
+        "name": "Pseudomonas aeruginosa PAO1",
+        "isolated_from": "Environment Agency Wastewater"
+      }
+    },
+    "sequencing": {
+      "date_sequenced": "2022-08-01",
+      "sequencing_center": "University of Exeter",
+      "sequencing_type": "2 x 150 bp",
+      "number_of_reads": 6731914,
+      "total_bp": 995676798,
+      "reads": {
+        "read_url": [
+          "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/reads/CPL00273/orig_reads/CPL00273-fwd.qc.fq.gz",
+          "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/reads/CPL00273/orig_reads/CPL00273-fwd.qc.fq.gz"
+        ],
+        "read_qc_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00273/01_reads/orig_reads/qc-report.tgz"
+      },
+      "host_removal": {
+        "host_genome": "Pseudomonas aeruginosa PAO1",
+        "genome_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00273/01_reads/host-mapping/host.fa",
+        "mapping": {
+          "total_mapped_count": "1078",
+          "total_unmapped_count": "6730410",
+          "total_mapped_bp": "159636",
+          "total_unmapped_bp": "995454746",
+          "pct_mapped_count": "0.016",
+          "pct_mapped_bp": "0.016",
+          "mapped_reads_bam_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00273/01_reads/host-mapping/host-mapped-reads.bam"
+        }
+      }
+    },
+    "assemblies": [
+      {
+        "assembler": "shovill",
+        "assembler_version": "1.1.0",
+        "command": "--minlen 10000 --depth 500 --mincov 20 --keepfiles --cpus {threads} --force --noreadcorr",
+        "subsampled_coverage": "500",
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00273/02_assembly/shovill/CPL00273-shovill-contigs.fa.gz",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00273/02_assembly/shovill/CPL00273-shovill-contigs.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "contig00001",
+            "new_name": "CPL00273",
+            "length": "66551"
+          }
+        ]
+      },
+      {
+        "assembler": "unicycler",
+        "assembler_version": "0.5.0",
+        "command": "--min_fasta_length 1000",
+        "subsampled_coverage": "500",
+        "subsampled_method": {
+          "program_name": "shovill",
+          "program_version": "1.1.0",
+          "command": "--minlen 10000 --depth 500 --mincov 20 --keepfiles --cpus {threads} --force --noreadcorr"
+        },
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00273/02_assembly/unicycler/shovill-reads/contigs.fa",
+        "bandage_png": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00273/02_assembly/unicycler/shovill-reads/CPL00273-shovill-bandage.png",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00273/02_assembly/unicycler/shovill-reads/bandage.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "1",
+            "new_name": "CPL00273",
+            "length": "66452"
+          }
+        ]
+      },
+      {
+        "assembler": "unicycler",
+        "assembler_version": "0.5.0",
+        "command": "--min_fasta_length 1000",
+        "subsampled_coverage": "1pc",
+        "subsampled_method": {
+          "program_name": "seqtk",
+          "program_version": "1.3",
+          "command": "seqtk sample {input.fwd} 0.01  | pigz --fast -c -p 16 > {output.sub_fwd}"
+        },
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00273/02_assembly/unicycler/1pc/contigs.fa",
+        "bandage_png": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00273/02_assembly/unicycler/1pc/CPL00273-1pc-bandage.png",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00273/02_assembly/unicycler/1pc/bandage.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "1",
+            "new_name": "CPL00273-1pc",
+            "length": "66452"
+          }
+        ]
+      }
+    ],
+    "purity": {
+      "total_mapped_count": "6635697",
+      "total_unmapped_count": "96217",
+      "total_mapped_bp": "983298041",
+      "total_unmapped_bp": "12378757",
+      "pct_mapped_count": "98.571",
+      "pct_mapped_bp": "98.757"
+    },
+    "viral_contigs": {
+      "selected_contig_name": "CPL00273",
+      "selected_contig_length": 66452,
+      "checkv": {
+        "version": "1.0.1",
+        "command": "checkv end_to_end {input.assembly} scratch/{wildcards.sample}/shovill-checkv -t {threads} -d {input.db}/checkv-db-v* --remove_tmp",
+        "contigs": [
+          {
+            "name": "CPL00273",
+            "quality": "High-quality",
+            "estimated_completeness": "100.00"
+          }
+        ]
+      },
+      "gene_calling": {
+        "program_used": "pharokka + phold",
+        "program_version": "1.7.1",
+        "command": "-g prodigal --force --dnaapler",
+        "genbank_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00273/05_annotation/CPL00273/phold.gbk",
+        "plot_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00273/05_annotation/CPL00273/phold.png"
+      },
+      "lifestyle": {
+        "predicted_lifestyle": "virulent",
+        "prediction_methods": [
+          {
+            "program_name": "PhageLeads",
+            "program_version": "https://doi.org/10.3390/v14020342",
+            "command": "https://phageleads.ku.dk/",
+            "result": "virulent"
+          }
+        ]
+      },
+      "genes_of_concern": {
+        "predicted_genes_of_concern": [],
+        "prediction_methods": [
+          {
+            "method": "vfdb",
+            "command": "pharokka.py -i {input.contigs} -o scratch/{wildcards.sample}/pharokka-unicycler -d {input.db} -t {threads} -l {wildcards.sample} -g prodigal --force --dnaapler --prefix {wildcards.sample}"
+          },
+          {
+            "method": "card",
+            "command": "pharokka.py -i {input.contigs} -o scratch/{wildcards.sample}/pharokka-unicycler -d {input.db} -t {threads} -l {wildcards.sample} -g prodigal --force --dnaapler --prefix {wildcards.sample}"
+          }
+        ]
+      },
+      "genome_coverage": {
+        "assembly_average_coverage": "3063.8",
+        "assembly_bam_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00273/06_coverage/CPL00273/assembly-mapped-reads.bam",
+        "assembly_coverage_plot_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00273/06_coverage/CPL00273/coverage-CPL00273.png"
+      },
+      "variants": {
+        "program_name": "snippy",
+        "program_version": "4.6.0",
+        "command": "snippy --cpus 16",
+        "full_read_bam_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00273/07_variants/CPL00273/snps.bam",
+        "variants": []
+      },
+      "phylogeny": {
+        "estimated_distance": 0.0113974,
+        "estimated_distance_method": "mash",
+        "database_name": "inphared",
+        "database_version": "1Aug2023",
+        "name": "MT119369.1 Pseudomonas phage sortsol, complete genome",
+        "accession_number": "MT119369",
+        "taxonomy": "Viruses; Duplodnaviria; Heunggongvirae; Uroviricota; Caudoviricetes; Pbunavirus; Pbunavirus PA8P1"
+      }
+    },
+    "receptors": ["LPS outer core"]
+  },
+  {
+    "version": "1.0.0",
+    "name": {
+      "full_name": "Pseudomonas phage CPL00947",
+      "short_name": "CPL00947"
+    },
+    "visibility": "internal",
+    "status": "sequenced",
+    "processes": [],
+    "source": {
+      "isolation_host": {
+        "name": "Pseudomonas aeruginosa PAO1",
+        "isolated_from": "Environment Agency Wastewater"
+      }
+    },
+    "sequencing": {
+      "date_sequenced": "2023-10-16",
+      "sequencing_center": "University of Exeter",
+      "sequencing_type": "2 x 250 bp",
+      "number_of_reads": 3279268,
+      "total_bp": 795655000,
+      "reads": {
+        "read_url": [
+          "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/reads/CPL00947/orig_reads/CPL00947-fwd.qc.fq.gz",
+          "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/reads/CPL00947/orig_reads/CPL00947-fwd.qc.fq.gz"
+        ],
+        "read_qc_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00947/01_reads/orig_reads/qc-report.tgz"
+      },
+      "host_removal": {
+        "host_genome": "Pseudomonas aeruginosa PAO1",
+        "genome_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00947/01_reads/host-mapping/host.fa",
+        "mapping": {
+          "total_mapped_count": "63260",
+          "total_unmapped_count": "2931238",
+          "total_mapped_bp": "14096740",
+          "total_unmapped_bp": "710915123",
+          "pct_mapped_count": "2.113",
+          "pct_mapped_bp": "1.944",
+          "mapped_reads_bam_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00947/01_reads/host-mapping/host-mapped-reads.bam"
+        }
+      }
+    },
+    "assemblies": [
+      {
+        "assembler": "shovill",
+        "assembler_version": "1.1.0",
+        "command": "--minlen 10000 --depth 500 --mincov 20 --keepfiles --cpus {threads} --force --noreadcorr",
+        "subsampled_coverage": "500",
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00947/02_assembly/shovill/CPL00947-shovill-contigs.fa.gz",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00947/02_assembly/shovill/CPL00947-shovill-contigs.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "contig00001",
+            "new_name": "CPL00947",
+            "length": "66280"
+          }
+        ]
+      },
+      {
+        "assembler": "unicycler",
+        "assembler_version": "0.5.0",
+        "command": "--min_fasta_length 1000",
+        "subsampled_coverage": "500",
+        "subsampled_method": {
+          "program_name": "shovill",
+          "program_version": "1.1.0",
+          "command": "--minlen 10000 --depth 500 --mincov 20 --keepfiles --cpus {threads} --force --noreadcorr"
+        },
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00947/02_assembly/unicycler/shovill-reads/contigs.fa",
+        "bandage_png": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00947/02_assembly/unicycler/shovill-reads/CPL00947-shovill-bandage.png",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00947/02_assembly/unicycler/shovill-reads/bandage.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "1",
+            "new_name": "CPL00947",
+            "length": "66280"
+          }
+        ]
+      },
+      {
+        "assembler": "unicycler",
+        "assembler_version": "0.5.0",
+        "command": "--min_fasta_length 1000",
+        "subsampled_coverage": "1pc",
+        "subsampled_method": {
+          "program_name": "seqtk",
+          "program_version": "1.3",
+          "command": "seqtk sample {input.fwd} 0.01  | pigz --fast -c -p 16 > {output.sub_fwd}"
+        },
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00947/02_assembly/unicycler/1pc/contigs.fa",
+        "bandage_png": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00947/02_assembly/unicycler/1pc/CPL00947-1pc-bandage.png",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00947/02_assembly/unicycler/1pc/bandage.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "1",
+            "new_name": "CPL00947-1pc",
+            "length": "66280"
+          }
+        ]
+      }
+    ],
+    "purity": {
+      "total_mapped_count": "3272735",
+      "total_unmapped_count": "6533",
+      "total_mapped_bp": "794076388",
+      "total_unmapped_bp": "1578612",
+      "pct_mapped_count": "99.801",
+      "pct_mapped_bp": "99.802"
+    },
+    "viral_contigs": {
+      "selected_contig_name": "CPL00947",
+      "selected_contig_length": 66281,
+      "checkv": {
+        "version": "1.0.1",
+        "command": "checkv end_to_end {input.assembly} scratch/{wildcards.sample}/shovill-checkv -t {threads} -d {input.db}/checkv-db-v* --remove_tmp",
+        "contigs": [
+          {
+            "name": "CPL00947",
+            "quality": "High-quality",
+            "estimated_completeness": "100.00"
+          }
+        ]
+      },
+      "gene_calling": {
+        "program_used": "pharokka + phold",
+        "program_version": "1.7.1",
+        "command": "-g prodigal --force --dnaapler",
+        "genbank_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00947/05_annotation/CPL00947/phold.gbk",
+        "plot_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00947/05_annotation/CPL00947/phold.png"
+      },
+      "lifestyle": {
+        "predicted_lifestyle": "virulent",
+        "prediction_methods": [
+          {
+            "program_name": "PhageLeads",
+            "program_version": "https://doi.org/10.3390/v14020342",
+            "command": "https://phageleads.ku.dk/",
+            "result": "virulent"
+          }
+        ]
+      },
+      "genes_of_concern": {
+        "predicted_genes_of_concern": [],
+        "prediction_methods": [
+          {
+            "method": "vfdb",
+            "command": "pharokka.py -i {input.contigs} -o scratch/{wildcards.sample}/pharokka-unicycler -d {input.db} -t {threads} -l {wildcards.sample} -g prodigal --force --dnaapler --prefix {wildcards.sample}"
+          },
+          {
+            "method": "card",
+            "command": "pharokka.py -i {input.contigs} -o scratch/{wildcards.sample}/pharokka-unicycler -d {input.db} -t {threads} -l {wildcards.sample} -g prodigal --force --dnaapler --prefix {wildcards.sample}"
+          }
+        ]
+      },
+      "genome_coverage": {
+        "assembly_average_coverage": "2353.8",
+        "assembly_bam_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00947/06_coverage/CPL00947/assembly-mapped-reads.bam",
+        "assembly_coverage_plot_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00947/06_coverage/CPL00947/coverage-CPL00947.png"
+      },
+      "variants": {
+        "program_name": "snippy",
+        "program_version": "4.6.0",
+        "command": "snippy --cpus 16",
+        "full_read_bam_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00947/07_variants/CPL00947/snps.bam",
+        "variants": []
+      },
+      "phylogeny": {
+        "estimated_distance": 0.0101041,
+        "estimated_distance_method": "mash",
+        "database_name": "inphared",
+        "database_version": "1Aug2023",
+        "name": "MT119375.1 Pseudomonas phage chumba, complete genome",
+        "accession_number": "MT119375",
+        "taxonomy": "Viruses; Duplodnaviria; Heunggongvirae; Uroviricota; Caudoviricetes; Pbunavirus"
+      }
+    },
+    "receptors": ["LPS", "Type IV pili"]
+  },
+  {
+    "version": "1.0.0",
+    "name": {
+      "full_name": "Escherichia phage CPL00135",
+      "short_name": "CPL00135"
+    },
+    "visibility": "internal",
+    "status": "sequenced",
+    "processes": [],
+    "source": {
+      "isolation_host": {
+        "name": "Escherichia coli BW25113",
+        "isolated_from": "putty.wasp.natively"
+      }
+    },
+    "sequencing": {
+      "date_sequenced": "2022-09-12",
+      "sequencing_center": "University of Exeter",
+      "sequencing_type": "2 x 150 bp",
+      "number_of_reads": 1845662,
+      "total_bp": 267200994,
+      "reads": {
+        "read_url": [
+          "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/reads/CPL00135/orig_reads/CPL00135-fwd.qc.fq.gz",
+          "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/reads/CPL00135/orig_reads/CPL00135-fwd.qc.fq.gz"
+        ],
+        "read_qc_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00135/01_reads/orig_reads/qc-report.tgz"
+      },
+      "host_removal": {
+        "host_genome": "Escherichia coli BW25113",
+        "genome_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00135/01_reads/host-mapping/host.fa",
+        "mapping": {
+          "total_mapped_count": "8778",
+          "total_unmapped_count": "1836166",
+          "total_mapped_bp": "1128819",
+          "total_unmapped_bp": "265966734",
+          "pct_mapped_count": "0.476",
+          "pct_mapped_bp": "0.423",
+          "mapped_reads_bam_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00135/01_reads/host-mapping/host-mapped-reads.bam"
+        }
+      }
+    },
+    "assemblies": [
+      {
+        "assembler": "shovill",
+        "assembler_version": "1.1.0",
+        "command": "--minlen 10000 --depth 500 --mincov 20 --keepfiles --cpus {threads} --force --noreadcorr",
+        "subsampled_coverage": "500",
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00135/02_assembly/shovill/CPL00135-shovill-contigs.fa.gz",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00135/02_assembly/shovill/CPL00135-shovill-contigs.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "contig00001",
+            "new_name": "CPL00135",
+            "length": "89721"
+          }
+        ]
+      },
+      {
+        "assembler": "unicycler",
+        "assembler_version": "0.5.0",
+        "command": "--min_fasta_length 1000",
+        "subsampled_coverage": "500",
+        "subsampled_method": {
+          "program_name": "shovill",
+          "program_version": "1.1.0",
+          "command": "--minlen 10000 --depth 500 --mincov 20 --keepfiles --cpus {threads} --force --noreadcorr"
+        },
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00135/02_assembly/unicycler/shovill-reads/contigs.fa",
+        "bandage_png": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00135/02_assembly/unicycler/shovill-reads/CPL00135-shovill-bandage.png",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00135/02_assembly/unicycler/shovill-reads/bandage.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "1",
+            "new_name": "CPL00135",
+            "length": "89630"
+          }
+        ]
+      },
+      {
+        "assembler": "unicycler",
+        "assembler_version": "0.5.0",
+        "command": "--min_fasta_length 1000",
+        "subsampled_coverage": "1pc",
+        "subsampled_method": {
+          "program_name": "seqtk",
+          "program_version": "1.3",
+          "command": "seqtk sample {input.fwd} 0.01  | pigz --fast -c -p 16 > {output.sub_fwd}"
+        },
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00135/02_assembly/unicycler/1pc/contigs.fa",
+        "bandage_png": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00135/02_assembly/unicycler/1pc/CPL00135-1pc-bandage.png",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00135/02_assembly/unicycler/1pc/bandage.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "1",
+            "new_name": "CPL00135-1pc",
+            "length": "89630"
+          }
+        ]
+      }
+    ],
+    "purity": {
+      "total_mapped_count": "1838116",
+      "total_unmapped_count": "7546",
+      "total_mapped_bp": "266110023",
+      "total_unmapped_bp": "1090971",
+      "pct_mapped_count": "99.591",
+      "pct_mapped_bp": "99.592"
+    },
+    "viral_contigs": {
+      "selected_contig_name": "CPL00135",
+      "selected_contig_length": 89630,
+      "checkv": {
+        "version": "1.0.1",
+        "command": "checkv end_to_end {input.assembly} scratch/{wildcards.sample}/shovill-checkv -t {threads} -d {input.db}/checkv-db-v* --remove_tmp",
+        "contigs": [
+          {
+            "name": "CPL00135",
+            "quality": "High-quality",
+            "estimated_completeness": "100.00"
+          }
+        ]
+      },
+      "gene_calling": {
+        "program_used": "pharokka + phold",
+        "program_version": "1.7.1",
+        "command": "-g prodigal --force --dnaapler",
+        "genbank_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00135/05_annotation/CPL00135/phold.gbk",
+        "plot_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00135/05_annotation/CPL00135/phold.png"
+      },
+      "lifestyle": {
+        "predicted_lifestyle": "virulent",
+        "prediction_methods": [
+          {
+            "program_name": "PhageLeads",
+            "program_version": "https://doi.org/10.3390/v14020342",
+            "command": "https://phageleads.ku.dk/",
+            "result": "virulent"
+          }
+        ]
+      },
+      "genes_of_concern": {
+        "predicted_genes_of_concern": [],
+        "prediction_methods": [
+          {
+            "method": "vfdb",
+            "command": "pharokka.py -i {input.contigs} -o scratch/{wildcards.sample}/pharokka-unicycler -d {input.db} -t {threads} -l {wildcards.sample} -g prodigal --force --dnaapler --prefix {wildcards.sample}"
+          },
+          {
+            "method": "card",
+            "command": "pharokka.py -i {input.contigs} -o scratch/{wildcards.sample}/pharokka-unicycler -d {input.db} -t {threads} -l {wildcards.sample} -g prodigal --force --dnaapler --prefix {wildcards.sample}"
+          }
+        ]
+      },
+      "genome_coverage": {
+        "assembly_average_coverage": "914.1",
+        "assembly_bam_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00135/06_coverage/CPL00135/assembly-mapped-reads.bam",
+        "assembly_coverage_plot_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00135/06_coverage/CPL00135/coverage-CPL00135.png"
+      },
+      "variants": {
+        "program_name": "snippy",
+        "program_version": "4.6.0",
+        "command": "snippy --cpus 16",
+        "full_read_bam_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00135/07_variants/CPL00135/snps.bam",
+        "variants": []
+      },
+      "phylogeny": {
+        "estimated_distance": 0.0211548,
+        "estimated_distance_method": "mash",
+        "database_name": "inphared",
+        "database_version": "1Aug2023",
+        "name": "NC_031082.1 Escherichia phage vB_EcoM_Alf5, complete genome",
+        "accession_number": "NC_031082",
+        "taxonomy": "Viruses; Duplodnaviria; Heunggongvirae; Uroviricota; Caudoviricetes; Ounavirinae; Felixounavirus; Felixounavirus Alf5"
+      }
+    }
+  },
+  {
+    "version": "1.0.0",
+    "name": {
+      "full_name": "Escherichia phage CPL00138",
+      "short_name": "CPL00138"
+    },
+    "visibility": "internal",
+    "status": "sequenced",
+    "processes": [],
+    "source": {
+      "isolation_host": {
+        "name": "Escherichia coli BW25113",
+        "isolated_from": "charmingly.kicked.zoom"
+      }
+    },
+    "sequencing": {
+      "date_sequenced": "2022-08-03",
+      "sequencing_center": "University of Exeter",
+      "sequencing_type": "2 x 150 bp",
+      "number_of_reads": 5874690,
+      "total_bp": 884011071,
+      "reads": {
+        "read_url": [
+          "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/reads/CPL00138/orig_reads/CPL00138-fwd.qc.fq.gz",
+          "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/reads/CPL00138/orig_reads/CPL00138-fwd.qc.fq.gz"
+        ],
+        "read_qc_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00138/01_reads/orig_reads/qc-report.tgz"
+      },
+      "host_removal": {
+        "host_genome": "Escherichia coli BW25113",
+        "genome_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00138/01_reads/host-mapping/host.fa",
+        "mapping": {
+          "total_mapped_count": "20496",
+          "total_unmapped_count": "5040694",
+          "total_mapped_bp": "2746455",
+          "total_unmapped_bp": "758629279",
+          "pct_mapped_count": "0.405",
+          "pct_mapped_bp": "0.361",
+          "mapped_reads_bam_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00138/01_reads/host-mapping/host-mapped-reads.bam"
+        }
+      }
+    },
+    "assemblies": [
+      {
+        "assembler": "shovill",
+        "assembler_version": "1.1.0",
+        "command": "--minlen 10000 --depth 500 --mincov 20 --keepfiles --cpus {threads} --force --noreadcorr",
+        "subsampled_coverage": "500",
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00138/02_assembly/shovill/CPL00138-shovill-contigs.fa.gz",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00138/02_assembly/shovill/CPL00138-shovill-contigs.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "contig00001",
+            "new_name": "CPL00138",
+            "length": "48456"
+          }
+        ]
+      },
+      {
+        "assembler": "unicycler",
+        "assembler_version": "0.5.0",
+        "command": "--min_fasta_length 1000",
+        "subsampled_coverage": "500",
+        "subsampled_method": {
+          "program_name": "shovill",
+          "program_version": "1.1.0",
+          "command": "--minlen 10000 --depth 500 --mincov 20 --keepfiles --cpus {threads} --force --noreadcorr"
+        },
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00138/02_assembly/unicycler/shovill-reads/contigs.fa",
+        "bandage_png": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00138/02_assembly/unicycler/shovill-reads/CPL00138-shovill-bandage.png",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00138/02_assembly/unicycler/shovill-reads/bandage.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "1",
+            "new_name": "CPL00138",
+            "length": "48345"
+          }
+        ]
+      },
+      {
+        "assembler": "unicycler",
+        "assembler_version": "0.5.0",
+        "command": "--min_fasta_length 1000",
+        "subsampled_coverage": "1pc",
+        "subsampled_method": {
+          "program_name": "seqtk",
+          "program_version": "1.3",
+          "command": "seqtk sample {input.fwd} 0.01  | pigz --fast -c -p 16 > {output.sub_fwd}"
+        },
+        "contigs_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00138/02_assembly/unicycler/1pc/contigs.fa",
+        "bandage_png": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00138/02_assembly/unicycler/1pc/CPL00138-1pc-bandage.png",
+        "assembly_graph": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00138/02_assembly/unicycler/1pc/bandage.gfa.gz",
+        "contigs": [
+          {
+            "old_name": "1",
+            "new_name": "CPL00138-1pc",
+            "length": "48345"
+          }
+        ]
+      }
+    ],
+    "purity": {
+      "total_mapped_count": "5860172",
+      "total_unmapped_count": "14518",
+      "total_mapped_bp": "881852788",
+      "total_unmapped_bp": "2158283",
+      "pct_mapped_count": "99.753",
+      "pct_mapped_bp": "99.756"
+    },
+    "viral_contigs": {
+      "selected_contig_name": "CPL00138",
+      "selected_contig_length": 48345,
+      "checkv": {
+        "version": "1.0.1",
+        "command": "checkv end_to_end {input.assembly} scratch/{wildcards.sample}/shovill-checkv -t {threads} -d {input.db}/checkv-db-v* --remove_tmp",
+        "contigs": [
+          {
+            "name": "CPL00138",
+            "quality": "High-quality",
+            "estimated_completeness": "100.00"
+          }
+        ]
+      },
+      "gene_calling": {
+        "program_used": "pharokka + phold",
+        "program_version": "1.7.1",
+        "command": "-g prodigal --force --dnaapler",
+        "genbank_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00138/05_annotation/CPL00138/phold.gbk",
+        "plot_url": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00138/05_annotation/CPL00138/phold.png"
+      },
+      "lifestyle": {
+        "predicted_lifestyle": "TO_COMPLETE",
+        "prediction_methods": [
+          {
+            "program_name": "PhageLeads",
+            "program_version": "https://doi.org/10.3390/v14020342",
+            "command": "https://phageleads.ku.dk/",
+            "result": "TO_COMPLETE"
+          }
+        ]
+      },
+      "genes_of_concern": {
+        "predicted_genes_of_concern": [],
+        "prediction_methods": [
+          {
+            "method": "vfdb",
+            "command": "pharokka.py -i {input.contigs} -o scratch/{wildcards.sample}/pharokka-unicycler -d {input.db} -t {threads} -l {wildcards.sample} -g prodigal --force --dnaapler --prefix {wildcards.sample}"
+          },
+          {
+            "method": "card",
+            "command": "pharokka.py -i {input.contigs} -o scratch/{wildcards.sample}/pharokka-unicycler -d {input.db} -t {threads} -l {wildcards.sample} -g prodigal --force --dnaapler --prefix {wildcards.sample}"
+          }
+        ]
+      },
+      "genome_coverage": {
+        "assembly_average_coverage": "4448.6",
+        "assembly_bam_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00138/06_coverage/CPL00138/assembly-mapped-reads.bam",
+        "assembly_coverage_plot_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00138/06_coverage/CPL00138/coverage-CPL00138.png"
+      },
+      "variants": {
+        "program_name": "snippy",
+        "program_version": "4.6.0",
+        "command": "snippy --cpus 16",
+        "full_read_bam_file": "https://f003.backblazeb2.com/file/CitizenPhageLibrary/data-store/CPL00138/07_variants/CPL00138/snps.bam",
+        "variants": []
+      },
+      "phylogeny": {
+        "estimated_distance": 0.106845,
+        "estimated_distance_method": "mash",
+        "database_name": "inphared",
+        "database_version": "1Aug2023",
+        "name": "MZ501051.1 Escherichia phage AugustePiccard, complete genome",
+        "accession_number": "MZ501051",
+        "taxonomy": "Viruses; Duplodnaviria; Heunggongvirae; Uroviricota; Caudoviricetes; Drexlerviridae; Braunvirinae"
+      }
+    }
+  }
+]

@@ -1,0 +1,82 @@
+.container {
+  background-color: var(--bgSoft);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.addButton {
+  padding: 10px;
+  background-color: #5d57c9;
+  color: var(--text);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.table {
+  width: 100%;
+}
+
+.table td {
+  padding: 10px;
+}
+
+.table td:nth-child(3),
+.table td:nth-child(4) {
+  text-align: right;
+}
+
+.species {
+  font-style: italic;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--text);
+  border: none;
+  cursor: pointer;
+}
+
+.view {
+  background-color: teal;
+}
+
+.archive {
+  background-color: darkorange;
+}
+
+.status {
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 12px;
+  color: white;
+}
+
+.isolated {
+  background-color: var(--isolated);
+}
+
+.sequenced {
+  background-color: var(--sequenced);
+}
+
+.purified {
+  background-color: var(--purified);
+}
+
+.annotated {
+  background-color: var(--annotated);
+}
