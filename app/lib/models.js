@@ -1,4 +1,4 @@
-import { ObjectId, Schema, models, model } from "mongoose";
+import { Schema, models, model } from "mongoose";
 import { randomUUID } from "crypto";
 
 const userSchema = new Schema(
@@ -46,6 +46,31 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
+const kitSchema = new Schema({
+  hunter: {
+    type: Schema.Types.ObjectId,
+  },
+  event: {
+    type: String,
+  },
+  status: {
+    type: String,
+    enum: ["created", "shipped", "registered", "returned", "destroyed"],
+  },
+  processes: [
+    {
+      name: {
+        type: String,
+        enum: ["created", "shipped", "registered", "returned", "destroyed"],
+      },
+      date: { type: Date },
+      user: { type: String },
+      notes: { type: String },
+    },
+  ],
+  samples: [Schema.Types.ObjectId],
+});
+
 const sampleSchema = new Schema(
   {
     type: {
@@ -59,22 +84,17 @@ const sampleSchema = new Schema(
       ],
       required: true,
     },
+    assigned_label: { type: String, required: true },
 
     isCitizenSample: { type: Boolean, default: true },
 
     w3w: {
       type: String,
     },
-    kit_number: {
-      type: String,
+    kit: {
+      type: Schema.Types.ObjectId,
     },
-    hunter: {
-      type: ObjectId,
-      required: true,
-    },
-    event: {
-      type: String,
-    },
+
     date_taken: {
       type: Date,
       required: true,
@@ -119,7 +139,7 @@ const sampleSchema = new Schema(
         date: { type: Date, required: true },
         method_uri: { type: String, immutable: true },
         notes: String,
-        phages_found: [{ type: ObjectId }],
+        phages_found: [{ type: Schema.Types.ObjectId }],
       },
     ],
   },
@@ -128,9 +148,11 @@ const sampleSchema = new Schema(
 
 const hostSchema = new Schema(
   {
+    short_name: { type: String, required: true, minLength: 5, maxLength: 12 },
     genus: { type: String, required: true },
     species: { type: String, required: true },
     strain: { type: String, required: true },
+
     source: {
       reason: { type: String, required: true },
       institution: { type: String, required: true },
@@ -141,28 +163,141 @@ const hostSchema = new Schema(
         end_date: Date,
       },
     },
-    storage: [
-      {
-        format: { type: String, required: true },
-        freezer: { type: String, required: true },
-        box_number: { type: String, required: true },
-        position: { type: String, required: true },
+    reference_genome: {
+      uri: { type: String, immutable: true },
+      format: { type: String, enum: ["genbank", "fasta", "external_url"] },
+    },
+
+    preferred_growth_conditions: {
+      temperature: { type: Number, min: 0, max: 50 },
+      medium: { type: String },
+      doubling_time: { type: Number, min: 0 },
+      carrying_capacity: { type: Number, min: 0 },
+    },
+    processes: {
+      received: {
+        date: {
+          type: Date,
+        },
+        by: {
+          type: String,
+        },
       },
-    ],
-    processes: [
-      {
-        name: { type: String, required: true },
-        date: { type: Date, required: true },
-        user: { type: String, required: true },
-        notes: { type: String },
-        files: [
-          {
-            uri: { type: String, immutable: true },
-            description: { type: String },
+      stored: [
+        {
+          format: { type: String },
+          date: { type: Date },
+          by: { type: String },
+          type: { type: String, enum: ["master stock", "working stock"] },
+          location: {
+            temperature: { type: Number, min: -80, max: 10 },
+            date: { type: Date },
+            fridge_freezer_name: { type: String },
+            box_number: { type: String },
+            position: { type: String, minLength: 2 },
           },
-        ],
-      },
-    ],
+          destroyed: {
+            date: { type: Date },
+            by: { type: String },
+            reason: { type: String },
+          },
+        },
+      ],
+      dna_extraction: [
+        {
+          date: { type: Date },
+          by: { type: String },
+          reason: { type: String },
+          method: { type: String },
+          method_uri: { type: String, immutable: true },
+          final_concentration: { type: Number },
+          final_elution_volume: { type: Number },
+          storage: {
+            format: { type: String },
+            location: {
+              temperature: { type: Number, min: -80, max: 10 },
+              date: { type: Date, required: true },
+              fridge_freezer_name: { type: String },
+              box_number: { type: String },
+              position: { type: String, minLength: 2 },
+            },
+            other: { type: String, minLength: 5 },
+            isActive: { type: Boolean },
+          },
+        },
+      ],
+      sequencing: [
+        {
+          source_dna: Schema.Types.ObjectId,
+          date_sequenced: { type: Date },
+          sequencing_center: { type: String },
+          sequencing_type: { type: String },
+          number_of_reads: { type: Number, min: 0 },
+          total_bp: { type: Number, min: 0 },
+          reads: {
+            read_url: { type: String, immutable: true },
+            read_qc_url: String,
+            visibility: {
+              type: String,
+              enum: ["all", "internal", "controlled"],
+              default: "internal",
+            },
+          },
+        },
+      ],
+      assembly: [
+        {
+          date: { type: Date },
+          by: { type: String },
+          reason: { type: String },
+          assembler: { type: String },
+          assembler_version: { type: String },
+          command: { type: String },
+          contigs_file: { type: String, immutable: true },
+          assembly_graph: { type: String, immutable: true },
+          contigs: [
+            {
+              old_name: String,
+              new_name: String,
+              length: Number,
+            },
+          ],
+        },
+      ],
+      shipped: [
+        {
+          date: { type: Date },
+          by: { type: String },
+          reason: { type: String },
+          notes: [String],
+          files: [
+            {
+              uri: { type: String, immutable: true },
+              description: { type: String },
+              type: { type: String },
+            },
+          ],
+        },
+      ],
+      propagated: [
+        {
+          storage_id: Schema.Types.ObjectId,
+          date: { type: Date },
+          by: { type: String },
+          reason: { type: String },
+          notes: [String],
+          files: [
+            {
+              uri: { type: String, immutable: true },
+              description: { type: String },
+              type: { type: String },
+            },
+          ],
+        },
+      ],
+    },
+    infecting_phages: [Schema.Types.ObjectId],
+    notes: [String],
   },
   { timestamps: true }
 );
@@ -188,7 +323,7 @@ const phageSchema = new Schema(
     },
     processes: [
       {
-        _id: ObjectId,
+        process_id: Schema.Types.ObjectId,
         name: {
           type: String,
           enum: [
@@ -366,6 +501,7 @@ const phageSchema = new Schema(
 );
 
 export const User = models.User || model("User", userSchema);
+export const Kit = models.Kit || model("Kit", kitSchema);
 export const Sample = models.Sample || model("Sample", sampleSchema);
 export const Host = models.Host || model("Host", hostSchema);
 export const Phage = models.Phage || model("Phage", phageSchema);

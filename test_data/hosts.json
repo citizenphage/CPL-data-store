@@ -1,0 +1,529 @@
+[
+  {
+    "short_name": "AB13420",
+    "genus": "Acinetobacter",
+    "species": "Acinetobacter baumannii",
+    "strain": "Acinetobacter baumannii NCTC13420",
+    "source": {
+      "reason": "CRAB phage hunt",
+      "institution": "PHE culture collection",
+      "contact_email": ""
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A149",
+            "position": "G1-G3"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "ABRDE1",
+    "genus": "Acinetobacter",
+    "species": "Acinetobacter baumannii",
+    "strain": "Acinetobacter baumannii RDE1",
+    "source": {
+      "reason": "CRAB phage hunt",
+      "institution": "Royal Devon and Exeter Hospital",
+      "contact_email": "cressida.auckland@nhs.net"
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A149",
+            "position": "H3-H5"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "AJRDE1",
+    "genus": "Acinetobacter",
+    "species": "Acinetobacter johnsonii",
+    "strain": "Acinetobacter johnsonii RDE1",
+    "source": {
+      "reason": "CRAB phage hunt",
+      "institution": "Royal Devon and Exeter Hospital",
+      "contact_email": "cressida.auckland@nhs.net"
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A149",
+            "position": "G6-G8"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "AJRDE2",
+    "genus": "Acinetobacter",
+    "species": "Acinetobacter johnsonii",
+    "strain": "Acinetobacter johnsonii RDE2",
+    "source": {
+      "reason": "CRAB phage hunt",
+      "institution": "Royal Devon and Exeter Hospital",
+      "contact_email": "cressida.auckland@nhs.net"
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A149",
+            "position": "G9-H2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "ABUKA17",
+    "genus": "Acinetobacter",
+    "species": "Acinetobacter baumannii",
+    "strain": "Acinetobacter baumannii UKA17",
+    "source": {
+      "reason": "CRAB phage hunt",
+      "institution": "University of Western England (UWE)",
+      "contact_email": "Dann2.Turner@uwe.ac.uk"
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A149",
+            "position": "I1-I2"
+          }
+        },
+        {
+          "format": "glycerol cryostock",
+          "type": "master stock",
+          "location": {
+            "temperature": "-70",
+            "position": "BPRG1463"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "ABUKA9",
+    "genus": "Acinetobacter",
+    "species": "Acinetobacter baumannii",
+    "strain": "Acinetobacter baumannii UKA9",
+    "source": {
+      "reason": "CRAB phage hunt",
+      "institution": "University of Western England (UWE)",
+      "contact_email": "Dann2.Turner@uwe.ac.uk"
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A149",
+            "position": "I3-I4"
+          }
+        },
+        {
+          "format": "glycerol cryostock",
+          "type": "master stock",
+          "location": {
+            "temperature": "-70",
+            "position": "BPRG1462"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "AB13302",
+    "genus": "Acinetobacter",
+    "species": "Acinetobacter baumannii",
+    "strain": "Acinetobacter baumannii NCTC13302",
+    "source": {
+      "reason": "CRAB phage hunt",
+      "institution": "University of Western England (UWE)",
+      "contact_email": "Dann2.Turner@uwe.ac.uk"
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A149",
+            "position": "I5-I6"
+          }
+        },
+        {
+          "format": "glycerol cryostock",
+          "type": "master stock",
+          "location": {
+            "temperature": "-70",
+            "position": "BPRG1461"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "AB17978",
+    "genus": "Acinetobacter",
+    "species": "Acinetobacter baumannii",
+    "strain": "Acinetobacter baumannii NCTC17978",
+    "source": {
+      "reason": "CRAB phage hunt",
+      "institution": "University of Western England (UWE)",
+      "contact_email": "Dann2.Turner@uwe.ac.uk"
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A149",
+            "position": "I7-I8"
+          }
+        },
+        {
+          "format": "glycerol cryostock",
+          "type": "master stock",
+          "location": {
+            "temperature": "-70",
+            "position": "BPRG1460"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "AB4626215",
+    "genus": "Acinetobacter",
+    "species": "Acinetobacter baumannii",
+    "strain": "Acinetobacter baumannii 4626215",
+    "source": {
+      "reason": "Patient request for phages for UTI infection",
+      "institution": "Phage Germany",
+      "contact_email": "info@phagegermany.de"
+    },
+    "processes": {
+      "received": {
+        "date": "2023-10-12",
+        "by": "Julie Fletcher"
+      },
+
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A150",
+            "position": "H3-H5"
+          }
+        },
+        {
+          "format": "glycerol cryostock",
+          "type": "master stock",
+          "location": {
+            "temperature": "-70",
+            "position": "BPRG1514"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "ECBW25113",
+    "genus": "Escherichia",
+    "species": "Escherichia coli",
+    "strain": "Escherichia coli BW25113",
+    "source": {
+      "reason": "Basis of the Keio collection to facilitate identification of receptors",
+      "institution": "University of Exeter",
+      "contact_email": "w.moebius@exeter.ac.uk"
+    },
+    "reference_genome": {
+      "uri": "https://www.ncbi.nlm.nih.gov/nuccore/CP009273",
+      "format": "external_url"
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A149",
+            "position": "G4-G5"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "BG1",
+    "genus": "Burkholderia",
+    "species": "Burkholderia gladioli",
+    "strain": "Burkholderia gladioli BG1",
+    "source": {
+      "reason": "Patient from Papworth",
+      "institution": "Papworth Hospital"
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "master stock",
+          "location": {
+            "temperature": "-70",
+            "position": "BPRG1514"
+          }
+        }
+      ],
+      "received": {
+        "date": "2022-11-23",
+        "by": "Christian Fitch"
+      }
+    }
+  },
+  {
+    "short_name": "BG2",
+    "genus": "Burkholderia",
+    "species": "Burkholderia gladioli",
+    "strain": "Burkholderia gladioli BG2",
+    "source": {
+      "reason": "Patient from Papworth",
+      "institution": "Papworth Hospital"
+    },
+    "preferred_growth_conditions": {
+      "temperature": "37",
+      "medium": "Lysogeny Broth"
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "B149",
+            "position": "B2-B3"
+          }
+        }
+      ],
+      "received": {
+        "date": "2023-08-09",
+        "by": "Christian Fitch"
+      }
+    }
+  },
+  {
+    "short_name": "CDCF1",
+    "genus": "Coynebacterium",
+    "species": "Coynebacterium sp.",
+    "strain": "Coynebacterium sp. CDC F-1 CIB 137",
+    "source": {
+      "reason": "Patient being treated by Cytophage, Canada",
+      "institution": "Cytophage"
+    },
+    "preferred_growth_conditions": {
+      "temperature": "37",
+      "medium": "TSA + 5% horse blood"
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A150",
+            "position": "A7-A8"
+          }
+        },
+        {
+          "format": "glycerol cryostock",
+          "type": "master stock",
+          "location": {
+            "temperature": "-70",
+            "position": "BPRG1474"
+          }
+        }
+      ],
+      "received": {
+        "date": "2022-04-07"
+      }
+    }
+  },
+  {
+    "short_name": "EC13406",
+    "genus": "Enterobacter",
+    "species": "Enterobacter cloacae",
+    "strain": "Enterobacter cloacae NCTC 13406",
+    "source": {
+      "reason": "Patient being treated by Cytophage, Canada",
+      "institution": "Royal Devon & Exeter Hospital"
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A117",
+            "position": "A8"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "EC276_1",
+    "genus": "Enterobacter",
+    "species": "Enterobacter cloacae",
+    "strain": "Enterobacter cloacae 276 M0125",
+    "source": {
+      "reason": "Patient at Great Ormond Street hospital",
+      "institution": "Great Ormond Street hospital",
+      "contact_email": "James.Soothill@gosh.nhs.uk"
+    },
+    "preferred_growth_conditions": {
+      "temperature": "37",
+      "medium": "Lysogeny Broth"
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A150",
+            "position": "D8,D9,E1"
+          }
+        },
+        {
+          "format": "glycerol cryostock",
+          "type": "master stock",
+          "location": {
+            "temperature": "-70",
+            "position": "BPRG1482"
+          }
+        }
+      ],
+      "received": {
+        "date": "2022-10-21",
+        "by": "Julie Fletcher"
+      }
+    }
+  },
+  {
+    "short_name": "EC276_2",
+    "genus": "Enterobacter",
+    "species": "Enterobacter cloacae",
+    "strain": "Enterobacter cloacae 276 M0125",
+    "source": {
+      "reason": "Patient at Great Ormond Street hospital",
+      "institution": "Great Ormond Street hospital",
+      "contact_email": "James.Soothill@gosh.nhs.uk"
+    },
+    "preferred_growth_conditions": {
+      "temperature": "37",
+      "medium": "Lysogeny Broth"
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A150",
+            "position": "E2-E4"
+          }
+        },
+        {
+          "format": "glycerol cryostock",
+          "type": "master stock",
+          "location": {
+            "temperature": "-70",
+            "position": "BPRG1483"
+          }
+        }
+      ],
+      "received": {
+        "date": "2022-10-21",
+        "by": "Julie Fletcher"
+      }
+    }
+  },
+  {
+    "short_name": "EC276_3",
+    "genus": "Enterobacter",
+    "species": "Enterobacter cloacae",
+    "strain": "Enterobacter cloacae 276 M0125",
+    "source": {
+      "reason": "Patient at Great Ormond Street hospital (non mucoid)",
+      "institution": "Great Ormond Street hospital",
+      "contact_email": "James.Soothill@gosh.nhs.uk"
+    },
+    "preferred_growth_conditions": {
+      "temperature": "37",
+      "medium": "Lysogeny Broth"
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A150",
+            "position": "F3-F4"
+          }
+        },
+        {
+          "format": "glycerol cryostock",
+          "type": "master stock",
+          "location": {
+            "temperature": "-70",
+            "position": "BPRG1487"
+          }
+        }
+      ],
+      "received": {
+        "date": "2022-10-21",
+        "by": "Julie Fletcher"
+      }
+    }
+  }
+]

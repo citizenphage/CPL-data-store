@@ -1,5 +1,5 @@
 import styles from "@/app/(components)/dashboard/users/addUser/addUser.module.css";
-import { addUser } from "@/app/lib/actions";
+import { addUser } from "@/app/lib/users/actions";
 
 const AddUserPage = () => {
   return (
