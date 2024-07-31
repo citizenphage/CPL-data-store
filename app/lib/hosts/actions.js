@@ -6,12 +6,19 @@ import { redirect } from "next/navigation";
 import { Host } from "../models";
 import { connectToDB } from "../utils";
 
-export const fetchHosts = async (q) => {
+export const fetchHosts = async (q, page) => {
   const regex = new RegExp(q, "i");
+
+  const ITEM_PER_PAGE = 10;
   try {
     connectToDB();
-    const hosts = await Host.find({ strain: { $regex: regex } });
-    return hosts;
+    const count = await Host.find({
+      strain: { $regex: regex },
+    }).countDocuments();
+    const hosts = await Host.find({ strain: { $regex: regex } })
+      .limit(ITEM_PER_PAGE)
+      .skip(ITEM_PER_PAGE * (page - 1));
+    return { count, hosts };
   } catch (error) {
     console.log(error);
     throw new Error("Failed to fetch hosts", error);

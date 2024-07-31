@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  gap: 50px;
+  margin-top: 20px;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  gap: 50px;
+}
+
+.button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--text);
+  border: none;
+  cursor: pointer;
+}
+
+.view {
+  background-color: teal;
+}
+.title {
+}
+
+.rowLabel {
+  font-weight: 500;
+  font-style: bold;
+}
+
+.rowSubLabel {
+  font-weight: 500;
+  font-style: italic;
+  padding-left: 10px;
+}
+
+.source {
+}
+
+.assembly {
+}
+.assemblyTable {
+}
+
+.annotationTable {
+}
+
+.annotation {
+}
+
+.receptorsTable {
+}
+
+.receptors {
+}
+
+.genomeMap {
+}

@@ -525,5 +525,261 @@
         "by": "Julie Fletcher"
       }
     }
+  },
+  {
+    "short_name": "EC276_4",
+    "genus": "Enterobacter",
+    "species": "Enterobacter cloacae",
+    "strain": "Enterobacter cloacae 276 M0125",
+    "source": {
+      "reason": "Patient at Great Ormond Street hospital (non mucoid)",
+      "institution": "Great Ormond Street hospital",
+      "contact_email": "James.Soothill@gosh.nhs.uk"
+    },
+    "preferred_growth_conditions": {
+      "temperature": "37",
+      "medium": "Lysogeny Broth"
+    },
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A150",
+            "position": "F5-F6"
+          }
+        },
+        {
+          "format": "glycerol cryostock",
+          "type": "master stock",
+          "location": {
+            "temperature": "-70",
+            "position": "BPRG1488"
+          }
+        }
+      ],
+      "received": {
+        "date": "2022-11-07",
+        "by": "Julie Fletcher"
+      }
+    }
+  },
+  {
+    "short_name": "EF12697",
+    "genus": "Enterococcus",
+    "species": "Enterococcus faecalis",
+    "strain": "Enterococcus faecalis NCTC 12697",
+    "source": {
+      "reason": "",
+      "institution": "Royal Devon and Exeter Hospital"
+    },
+
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A117",
+            "position": "B6"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "EF13379",
+    "genus": "Enterococcus",
+    "species": "Enterococcus faecalis",
+    "strain": "Enterococcus faecalis NCTC 13379",
+    "source": {
+      "reason": "",
+      "institution": "Royal Devon and Exeter Hospital"
+    },
+
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A117",
+            "position": "B7"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "EFDFI106",
+    "genus": "Enterococcus",
+    "species": "Enterococcus faecium",
+    "strain": "Enterococcus faecium 10.6",
+    "source": {
+      "reason": "Isolated from patients with diabetic foot infection",
+      "institution": "Royal Devon and Exeter Hospital"
+    },
+
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A119",
+            "position": "A7"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "EFDFI1015",
+    "genus": "Enterococcus",
+    "species": "Enterococcus faecium",
+    "strain": "Enterococcus faecium 10.15",
+    "source": {
+      "reason": "Isolated from patients with diabetic foot infection",
+      "institution": "Royal Devon and Exeter Hospital"
+    },
+
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A119",
+            "position": "B7"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "EC13351",
+    "genus": "Escherichia",
+    "species": "Escherichia coli",
+    "strain": "Escherichia coli NCTC 13351",
+    "source": {
+      "reason": "",
+      "institution": "Royal Devon and Exeter Hospital"
+    },
+
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A117",
+            "position": "A9"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "EC12241",
+    "genus": "Escherichia",
+    "species": "Escherichia coli",
+    "strain": "Escherichia coli NCTC 12241",
+    "source": {
+      "reason": "",
+      "institution": "Royal Devon and Exeter Hospital"
+    },
+
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A117",
+            "position": "B1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "EC11954",
+    "genus": "Escherichia",
+    "species": "Escherichia coli",
+    "strain": "Escherichia coli NCTC 11954",
+    "source": {
+      "reason": "",
+      "institution": "Royal Devon and Exeter Hospital"
+    },
+
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A118",
+            "position": "B2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "ECDFI43",
+    "genus": "Escherichia",
+    "species": "Escherichia coli",
+    "strain": "Escherichia coli DFI 4.3",
+    "source": {
+      "reason": "",
+      "institution": "Royal Devon and Exeter Hospital"
+    },
+
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A117",
+            "position": "F3"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "short_name": "ECDFI43",
+    "genus": "Escherichia",
+    "species": "Escherichia coli",
+    "strain": "Escherichia coli DFI 4.3",
+    "source": {
+      "reason": "",
+      "institution": "Royal Devon and Exeter Hospital"
+    },
+
+    "processes": {
+      "stored": [
+        {
+          "format": "glycerol cryostock",
+          "type": "working stock",
+          "location": {
+            "temperature": "-70",
+            "box_number": "A117",
+            "position": "F3"
+          }
+        }
+      ]
+    }
   }
 ]

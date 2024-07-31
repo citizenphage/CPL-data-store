@@ -38,7 +38,7 @@ const PhagesPage = () => {
             </td>
             <td>
               <div className={styles.buttons}>
-                <Link href="/">
+                <Link href={`/dashboard/phages/test`}>
                   <button className={`${styles.button} ${styles.view}`}>
                     View
                   </button>
@@ -60,7 +60,7 @@ const PhagesPage = () => {
             </td>
             <td>
               <div className={styles.buttons}>
-                <Link href="/">
+                <Link href={`/dashboard/phages/test`}>
                   <button className={`${styles.button} ${styles.view}`}>
                     View
                   </button>

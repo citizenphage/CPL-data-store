@@ -1,11 +1,13 @@
 import styles from "@/app/(components)/dashboard/hosts/hosts.module.css";
+import Pagination from "@/app/(components)/dashboard/pagination/pagination";
 import Search from "@/app/(components)/dashboard/search/search";
 import { fetchHosts } from "@/app/lib/hosts/actions";
 import Link from "next/link";
 
 const HostsPage = async ({ searchParams }) => {
   const q = searchParams?.q || "";
-  const hosts = await fetchHosts(q);
+  const page = searchParams?.page || 1;
+  const { count, hosts } = await fetchHosts(q, page);
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -14,6 +16,7 @@ const HostsPage = async ({ searchParams }) => {
           <button className={styles.addButton}>Add New</button>
         </Link>
       </div>
+
       <table className={styles.table}>
         <thead>
           <tr>
@@ -50,6 +53,7 @@ const HostsPage = async ({ searchParams }) => {
           ))}
         </tbody>
       </table>
+      <Pagination count={count} />
     </div>
   );
 };
