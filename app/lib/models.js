@@ -1,6 +1,23 @@
 import { Schema, models, model } from "mongoose";
 import { randomUUID } from "crypto";
 
+const enrichmentSchema = new Schema({
+  sample: String,
+  host: {
+    _id: Schema.Types.UUID,
+    full_name: String,
+  },
+  plate: String,
+  well: String,
+  sample_type: String,
+  notes: String,
+  date: Date,
+  growth_medium: String,
+  volume: String,
+  by: String,
+  phage_found: { type: Boolean, default: false },
+});
+
 const userSchema = new Schema(
   {
     firstname: {
@@ -149,6 +166,7 @@ const sampleSchema = new Schema(
 const hostSchema = new Schema(
   {
     short_name: { type: String, required: true, minLength: 5, maxLength: 12 },
+    internal_name: { type: String, required: true },
     genus: { type: String, required: true },
     species: { type: String, required: true },
     strain: { type: String, required: true },
@@ -306,10 +324,10 @@ const phageSchema = new Schema(
   {
     UUID: { type: "UUID", required: true, default: () => randomUUID() },
     version: { type: String, required: true, immutable: true },
-    name: {
-      full_name: { type: String, required: true },
-      short_name: { type: String, required: true },
-    },
+
+    full_name: { type: String, required: true },
+    short_name: { type: String, required: true },
+
     visibility: {
       type: String,
       required: true,
@@ -500,6 +518,8 @@ const phageSchema = new Schema(
   { timestamps: true }
 );
 
+export const Enrichment =
+  models.Enrichment || model("Enrichment", enrichmentSchema);
 export const User = models.User || model("User", userSchema);
 export const Kit = models.Kit || model("Kit", kitSchema);
 export const Sample = models.Sample || model("Sample", sampleSchema);

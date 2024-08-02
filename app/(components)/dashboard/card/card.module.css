@@ -5,7 +5,7 @@
   display: flex;
   gap: 20px;
   cursor: pointer;
-  width: 100%;
+  width: 48%;
 }
 
 .container:hover {
@@ -35,4 +35,8 @@
 
 .negative {
   color: red;
+}
+
+.neutral {
+  color: var(--text);
 }

@@ -9,8 +9,12 @@ const Card = ({ item }) => {
         <span className={styles.title}>{item.title}</span>
         <span className={styles.number}>{item.value}</span>
         <span className={styles.detail}>
-          <span className={styles.positive}>{item.increase}</span> more in the
-          previous {item.timeframe}
+          <span
+            className={item.increase > 0 ? styles.positive : styles.neutral}
+          >
+            {item.increase}
+          </span>{" "}
+          more in the previous {item.timeframe}
         </span>
       </div>
     </div>

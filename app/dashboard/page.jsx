@@ -3,10 +3,13 @@ import styles from "../(components)/dashboard/dashboard.module.css";
 import RightBar from "../(components)/dashboard/rightbar/rightbar";
 import Transactions from "../(components)/dashboard/transactions/transactions";
 import Chart from "../(components)/dashboard/chart/chart";
-
-import { FaViruses, FaBacteria, FaBlog } from "react-icons/fa";
+import { countSamples, countEnrichments } from "../lib/dashboard/actions";
+import { FaViruses, FaMortarPestle } from "react-icons/fa";
 import { LuTestTubes } from "react-icons/lu";
 import { MdSupervisedUserCircle } from "react-icons/md";
+
+const { sample_count, sanple_last_month } = await countSamples();
+const { enrichment_count, enrichments_last_month } = await countEnrichments();
 
 const cards = [
   {
@@ -18,8 +21,8 @@ const cards = [
   },
   {
     title: "Samples Taken",
-    value: 10,
-    increase: 5,
+    value: `${sample_count}`,
+    increase: `${sanple_last_month}`,
     timeframe: "month",
     icon: <LuTestTubes size={24} />,
   },
@@ -29,6 +32,13 @@ const cards = [
     increase: 100,
     timeframe: "month",
     icon: <FaViruses size={24} />,
+  },
+  {
+    title: "Enrichments performed",
+    value: `${enrichment_count}`,
+    increase: `${enrichments_last_month}`,
+    timeframe: "month",
+    icon: <FaMortarPestle size={24} />,
   },
 ];
 
