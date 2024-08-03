@@ -42,7 +42,7 @@ def get_or_make_host(host_id, host_name):
         }
     
         new_id = hosts.insert_one(host)
-        print(f'Created a new host with ID {new_id}')
+       # print(f'Created a new host with ID {new_id}')
 
 
     return host
@@ -60,15 +60,10 @@ def get_or_make_sample(sample_number):
         }
         new_id = samples.insert_one(sample)
     else:
-        print(f'Retrieved sample {sample["assigned_cpl_sample_number"]} from MongoDB with id {sample["_id"]}')
+        #print(f'Retrieved sample {sample["assigned_cpl_sample_number"]} from MongoDB with id {sample["_id"]}')
+        pass
 
     return sample
-
-
-def get_next_phage_number():
-    collection_name = db_client["status"]
-    status = collection_name.find()[0]
-    return status['next_phage_number']
 
 
 def update_next_phage_number(phage_id=None):
@@ -78,8 +73,9 @@ def update_next_phage_number(phage_id=None):
         phage_id: The new phage id
     """
     rgx = re.compile('^CPL(\d{6}$)')
-    
-    next_available=get_next_phage_number()
+    collection_name = db_client["status"]
+    status = collection_name.find()[0]
+    next_available=status['next_phage_number']
     if not phage_id:
         number = int(rgx.search(next_available).group(1))
         new_number = number + 1
@@ -104,7 +100,43 @@ def update_next_phage_number(phage_id=None):
         status = collection_name.find()[0]
         status['next_phage_number'] = phage_id
         collection_name.update_one({'_id': status['_id']}, {'$set': status})
-        print(f'Updated next phage number from {next_available} to {phage_id}')
+        #print(f'Updated next phage number from {next_available} to {phage_id}')
+
+    return next_available
+
+
+
+def create_new_phage(enrichment):
+
+    isolation_host = enrichment['host']['full_name']
+
+    host_genus = isolation_host.split( )[0]
+    short_name = update_next_phage_number()
+    phage = {
+        "_id": str(uuid.uuid4()),
+        "version": "1.0.0",
+        "full_name": f'{host_genus} phage {short_name}',
+        "visibility": "internal",
+        "status": "isolated",
+        "source": {
+            "enrichment_id": enrichment["_id"],
+            "isolation_host": isolation_host,
+            "sample_type": enrichment['sample_type']
+        },
+        "processes": [{
+            "name": "isolation",
+            "date": enrichment['date'],
+            "user": enrichment['by'],
+            "notes": enrichment['notes']
+        }]
+    }
+
+    try:
+        phage['source']["isolated_from"] = enrichment["sample"]
+    except KeyError:
+        pass
+
+    return phage
 
 
 
@@ -128,8 +160,13 @@ def parse_row(row):
     sample  = get_or_make_sample(row[3])
     enrichment["sample_type"]=row[2]
 
-    enrichment['host'] = host
-    enrichment['sample'] = sample
+    enrichment['host'] = {key: host[key] for key in ["_id", "full_name"]}
+    if sample:
+        enrichment['sample'] = {key: sample[key] for key in ["_id", "assigned_cpl_sample_number"]}
+        try:
+            enrichment['sample']['w3w'] = sample["w3w"]
+        except KeyError:
+            pass
 
     return enrichment, sample
 
@@ -149,3 +186,18 @@ for row in table_df.itertuples(index=False):
 enrichment_collection = db_client["enrichments"]
 enrichment_collection.insert_many(enrichments)
 
+#now make the phages in the enrichments
+phage_df = table_df[table_df.iloc[:, 10]=='Y']
+
+new_phages = []
+
+for row in phage_df.itertuples(index=False):
+    enrichment = enrichment_collection.find_one({"plate": row[0],
+                                                 "well": row[1],
+                                                 "date": date.strftime("%Y-%m-%d"),
+                                                 "phage_found": True})
+    if enrichment:
+       new_phages.append(create_new_phage(enrichment))
+
+phage_collection = db_client['phages']
+phage_collection.insert_many(new_phages)
