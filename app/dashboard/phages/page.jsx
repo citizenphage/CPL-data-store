@@ -1,8 +1,24 @@
 import Pagination from "@/app/(components)/dashboard/pagination/pagination";
 import Search from "@/app/(components)/dashboard/search/search";
 import styles from "@/app/(components)/dashboard/phages/phages.module.css";
+import { fetchPhages } from "@/app/lib/phages/actions";
+
 import Link from "next/link";
-const PhagesPage = () => {
+const PhagesPage = async ({ searchParams }) => {
+  const q = searchParams?.q || "";
+  const page = searchParams?.page || 1;
+  const { count, phages } = await fetchPhages(q, page);
+
+  const statusStyles = {
+    isolated: styles.isolated,
+    purified: styles.purified,
+    sequenced: styles.sequenced,
+    annotated: styles.annotated,
+    // Add more status-to-style mappings here
+    // For example:
+    // anotherStatus: styles.anotherStyle
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -14,63 +30,45 @@ const PhagesPage = () => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <td>Short Name</td>
-            <td>Given Name</td>
-            <td>Host</td>
+            <td>Name</td>
+            <td>Version</td>
             <td>Genome Size</td>
             <td>Status</td>
             <td>Action</td>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>CPL00001</td>
-            <td>BinglyBong</td>
-            <td>
-              <span className={styles.species}>Pseudomonas aeruginosa</span>{" "}
-              PAO1
-            </td>
-            <td>123,456</td>
-            <td>
-              <span className={`${styles.status} ${styles.isolated}`}>
-                Isolated
-              </span>
-            </td>
-            <td>
-              <div className={styles.buttons}>
-                <Link href={`/dashboard/phages/test`}>
-                  <button className={`${styles.button} ${styles.view}`}>
-                    View
-                  </button>
-                </Link>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>CPL00002</td>
-            <td>DestyDues</td>
-            <td>
-              <span className={styles.species}>Escherichia coli</span> BW2
-            </td>
-            <td>42,735</td>
-            <td>
-              <span className={`${styles.status} ${styles.annotated}`}>
-                Annotated
-              </span>
-            </td>
-            <td>
-              <div className={styles.buttons}>
-                <Link href={`/dashboard/phages/test`}>
-                  <button className={`${styles.button} ${styles.view}`}>
-                    View
-                  </button>
-                </Link>
-              </div>
-            </td>
-          </tr>
+          {phages.map((phage) => (
+            <tr key={phage.id}>
+              <td>{phage.full_name}</td>
+              <td>{phage.version}</td>
+              <td>0</td>
+              <td>
+                <span
+                  className={`${styles.status} ${statusStyles[phage.status]}`}
+                >
+                  {phage.status}
+                </span>
+              </td>
+              <td>
+                <div className={styles.buttons}>
+                  <Link href={`/dashboard/phages/${phage.id}`}>
+                    <button className={`${styles.button} ${styles.view}`}>
+                      View
+                    </button>
+                  </Link>
+                  <Link href={`/dashboard/phages/${phage.id}/addProcess`}>
+                    <button className={`${styles.button} ${styles.addProcess}`}>
+                      Add Process
+                    </button>
+                  </Link>
+                </div>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
-      <Pagination />
+      <Pagination count={count} />
     </div>
   );
 };

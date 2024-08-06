@@ -53,6 +53,10 @@
   background-color: teal;
 }
 
+.addProcess {
+  background-color: darkgoldenrod;
+}
+
 .status {
   border-radius: 5px;
   padding: 5px;

@@ -33,10 +33,12 @@ def makePhage(row):
     hosts = db_client["hosts"]
 
     phage = {
+        "_id": str(uuid.uuid4()),
         "version": row[4],
         "full_name": f"{row[2]} phage {row[0]}",
         "short_name": row[0],
-        "visibility": "internal",    
+        "visibility": "internal",
+        "status": "isolated"
     }
 
     host = hosts.find_one({"_id": row[3]}, {"_id": 1, "full_name": 1})
