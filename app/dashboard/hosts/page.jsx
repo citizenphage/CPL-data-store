@@ -1,13 +1,13 @@
 import styles from "@/app/(components)/dashboard/hosts/hosts.module.css";
 import Pagination from "@/app/(components)/dashboard/pagination/pagination";
 import Search from "@/app/(components)/dashboard/search/search";
-import { fetchHosts } from "@/app/lib/hosts/actions";
+import { fetchHostsWithCounts } from "@/app/lib/hosts/actions";
 import Link from "next/link";
 
 const HostsPage = async ({ searchParams }) => {
   const q = searchParams?.q || "";
   const page = searchParams?.page || 1;
-  const { count, hosts } = await fetchHosts(q, page);
+  const { count, hosts } = await fetchHostsWithCounts(q, page);
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -20,7 +20,6 @@ const HostsPage = async ({ searchParams }) => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <td>Short Name</td>
             <td>Full Name</td>
             <td>Details</td>
             <td>Number of infecting phages</td>
@@ -29,8 +28,7 @@ const HostsPage = async ({ searchParams }) => {
         </thead>
         <tbody>
           {hosts.map((host) => (
-            <tr key={host.id}>
-              <td>{host.short_name}</td>
+            <tr key={host._id}>
               <td>
                 <span className={styles.species}>{host.strain}</span>
               </td>
@@ -39,7 +37,7 @@ const HostsPage = async ({ searchParams }) => {
                   {host?.source?.reason || ""}
                 </span>
               </td>
-              <td>{host?.infecting_phages.length || 0}</td>
+              <td>{host?.phageCount || 0}</td>
               <td>
                 <div className={styles.buttons}>
                   <Link href={`/dashboard/hosts/${host.id}`}>

@@ -6,18 +6,49 @@ import { redirect } from "next/navigation";
 import { Host } from "../models";
 import { connectToDB } from "../utils";
 
-export const fetchHosts = async (q, page) => {
+export const fetchHostsWithCounts = async (q, page) => {
   const regex = new RegExp(q, "i");
 
   const ITEM_PER_PAGE = 10;
   try {
     connectToDB();
-    const count = await Host.find({
-      strain: { $regex: regex },
-    }).countDocuments();
-    const hosts = await Host.find({ strain: { $regex: regex } })
-      .limit(ITEM_PER_PAGE)
-      .skip(ITEM_PER_PAGE * (page - 1));
+
+    const aggregation = await Host.aggregate([
+      {
+        $match: {
+          strain: { $regex: regex },
+        },
+      },
+      {
+        $lookup: {
+          from: "phages", // The name of the phage collection in the database
+          localField: "_id",
+          foreignField: "source.isolation_host.host_id", // Reference to the nested field
+          as: "phages",
+        },
+      },
+      {
+        $project: {
+          name: 1,
+          strain: 1,
+          phageCount: { $size: "$phages" },
+        },
+      },
+      {
+        $facet: {
+          metadata: [{ $count: "total" }],
+          data: [
+            { $skip: ITEM_PER_PAGE * (page - 1) },
+            { $limit: ITEM_PER_PAGE },
+          ],
+        },
+      },
+    ]);
+
+    const rtnData = aggregation[0];
+    const hosts = rtnData["data"];
+    const count = rtnData["metadata"][0]["total"];
+
     return { count, hosts };
   } catch (error) {
     console.log(error);

@@ -3,13 +3,18 @@ import styles from "../(components)/dashboard/dashboard.module.css";
 import RightBar from "../(components)/dashboard/rightbar/rightbar";
 import Transactions from "../(components)/dashboard/transactions/transactions";
 import Chart from "../(components)/dashboard/chart/chart";
-import { countSamples, countEnrichments } from "../lib/dashboard/actions";
+import {
+  countSamples,
+  countEnrichments,
+  countPhages,
+} from "../lib/dashboard/actions";
 import { FaViruses, FaMortarPestle } from "react-icons/fa";
 import { LuTestTubes } from "react-icons/lu";
 import { MdSupervisedUserCircle } from "react-icons/md";
 
 const { sample_count, sanple_last_month } = await countSamples();
 const { enrichment_count, enrichments_last_month } = await countEnrichments();
+const { phage_count, phage_last_month } = await countPhages();
 
 const cards = [
   {
@@ -28,8 +33,8 @@ const cards = [
   },
   {
     title: "Phages Isolated",
-    value: 1000,
-    increase: 100,
+    value: `${phage_count}`,
+    increase: `${phage_last_month}`,
     timeframe: "month",
     icon: <FaViruses size={24} />,
   },
