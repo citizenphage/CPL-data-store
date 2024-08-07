@@ -2,6 +2,7 @@ import { Schema, models, model } from "mongoose";
 import { randomUUID } from "crypto";
 
 const enrichmentSchema = new Schema({
+  _id: { type: String, required: true },
   sample: String,
   host: {
     _id: Schema.Types.UUID,
@@ -20,6 +21,7 @@ const enrichmentSchema = new Schema({
 
 const userSchema = new Schema(
   {
+    _id: { type: String, required: true },
     firstname: {
       type: String,
       min: 3,
@@ -64,6 +66,7 @@ const userSchema = new Schema(
 );
 
 const kitSchema = new Schema({
+  _id: { type: String, required: true },
   hunter: {
     type: Schema.Types.ObjectId,
   },
@@ -90,6 +93,7 @@ const kitSchema = new Schema({
 
 const sampleSchema = new Schema(
   {
+    _id: { type: String, required: true },
     type: {
       type: String,
       enum: [
@@ -133,6 +137,7 @@ const sampleSchema = new Schema(
 
     processes: [
       {
+        _id: { type: String, required: true },
         name: {
           type: String,
           enum: ["received", "filtered", "centrifuged", "stored", "destroyed"],
@@ -165,6 +170,7 @@ const sampleSchema = new Schema(
 
 const hostSchema = new Schema(
   {
+    _id: { type: String, required: true },
     short_name: { type: String, required: true, minLength: 5, maxLength: 12 },
     internal_name: { type: String, required: true },
     genus: { type: String, required: true },
@@ -322,7 +328,7 @@ const hostSchema = new Schema(
 
 const phageSchema = new Schema(
   {
-    _id: { type: "UUID", required: true, default: () => randomUUID() },
+    _id: { type: String, required: true },
     version: { type: String, required: true, immutable: true },
 
     full_name: { type: String, required: true },

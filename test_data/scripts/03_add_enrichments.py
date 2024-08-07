@@ -73,6 +73,7 @@ for row in df.itertuples(index=False):
         if phage:
             enrichment['phage_found'] = phage
             process = {
+                "_id": str(uuid.uuid4()),
                 "type": "isolation",
                 "enrichment": enrichment['_id']
             }
@@ -81,7 +82,7 @@ for row in df.itertuples(index=False):
             if not pd.isna(row[5]):
                 process['by'] = row[5]
 
-            phages_collection.update_one({"_id": phage["_id"]}, { "$push": {'processes': [process] } })
+            phages_collection.update_one({"_id": phage["_id"]}, { "$push": {'processes': process } })
 
 
     if not pd.isna(row[11]):

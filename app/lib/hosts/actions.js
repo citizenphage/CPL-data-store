@@ -29,9 +29,15 @@ export const fetchHostsWithCounts = async (q, page) => {
       },
       {
         $project: {
-          name: 1,
           strain: 1,
+          full_name: 1,
+          source: 1,
           phageCount: { $size: "$phages" },
+        },
+      },
+      {
+        $sort: {
+          phageCount: -1,
         },
       },
       {
@@ -47,7 +53,7 @@ export const fetchHostsWithCounts = async (q, page) => {
 
     const rtnData = aggregation[0];
     const hosts = rtnData["data"];
-    const count = rtnData["metadata"][0]["total"];
+    const count = rtnData["metadata"]?.[0]?.["total"] || 0;
 
     return { count, hosts };
   } catch (error) {
@@ -63,7 +69,7 @@ export const fetchHost = async (id) => {
     return host;
   } catch (error) {
     console.log(error);
-    throw new Error("Failed to fetch user", error);
+    throw new Error("Failed to fetch host", error);
   }
 };
 

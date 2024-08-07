@@ -15,10 +15,23 @@ export const fetchPhages = async (q, page) => {
 
     const phages = await Phage.find({ full_name: { $regex: regex } })
       .limit(ITEM_PER_PAGE)
-      .skip(ITEM_PER_PAGE * (page - 1));
+      .skip(ITEM_PER_PAGE * (page - 1))
+      .sort({ short_name: 1 });
     return { count, phages };
   } catch (error) {
     console.log(error);
     throw new Error("Failed to fetch phages", error);
+  }
+};
+
+export const fetchPhage = async (id) => {
+  try {
+    connectToDB();
+    const phage = await Phage.findOne({ _id: id });
+
+    return phage;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to fetch user", error);
   }
 };

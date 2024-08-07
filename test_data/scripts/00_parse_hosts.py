@@ -43,6 +43,17 @@ def addHost(row):
         if ancestor:
             host['ancestor'] = ancestor
 
+    if not pd.isna(row[6]):
+        source = {
+            "reason": row[6]
+        }
+        if not pd.isna(row[7]):
+            source['institution'] = row[7]
+        if not pd.isna(row[8]):
+            source['contact_email'] = row[8]
+
+        host['source'] = source
+
     hosts.insert_one(host)
 
 

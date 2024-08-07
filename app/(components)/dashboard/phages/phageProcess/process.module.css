@@ -1,0 +1,40 @@
+.container {
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+  width: 22%;
+}
+
+.container:hover {
+  background-color: #2e374a;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.type {
+  color: var(--text);
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.isolated {
+  background-color: var(--isolated);
+}
+
+.sequenced {
+  background-color: var(--sequenced);
+}
+
+.purified {
+  background-color: var(--purified);
+}
+
+.annotated {
+  background-color: var(--annotated);
+}

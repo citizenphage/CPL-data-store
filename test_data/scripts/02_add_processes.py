@@ -37,7 +37,7 @@ for row in df.itertuples(index=False):
 
         process = {
             "_id": str(uuid.uuid4()),
-            "name": "purification",
+            "type": "purification",
             "description": row[1]
         }
 

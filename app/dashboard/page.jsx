@@ -10,20 +10,12 @@ import {
 } from "../lib/dashboard/actions";
 import { FaViruses, FaMortarPestle } from "react-icons/fa";
 import { LuTestTubes } from "react-icons/lu";
-import { MdSupervisedUserCircle } from "react-icons/md";
 
 const { sample_count, sanple_last_month } = await countSamples();
 const { enrichment_count, enrichments_last_month } = await countEnrichments();
 const { phage_count, phage_last_month } = await countPhages();
 
 const cards = [
-  {
-    title: "Registered Hunters",
-    value: 120,
-    increase: 10,
-    timeframe: "month",
-    icon: <MdSupervisedUserCircle size={24} />,
-  },
   {
     title: "Samples Taken",
     value: `${sample_count}`,

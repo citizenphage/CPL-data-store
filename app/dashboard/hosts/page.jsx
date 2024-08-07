@@ -30,7 +30,7 @@ const HostsPage = async ({ searchParams }) => {
           {hosts.map((host) => (
             <tr key={host._id}>
               <td>
-                <span className={styles.species}>{host.strain}</span>
+                <span className={styles.species}>{host.full_name}</span>
               </td>
               <td>
                 <span className={styles.details}>
@@ -40,7 +40,7 @@ const HostsPage = async ({ searchParams }) => {
               <td>{host?.phageCount || 0}</td>
               <td>
                 <div className={styles.buttons}>
-                  <Link href={`/dashboard/hosts/${host.id}`}>
+                  <Link href={`/dashboard/hosts/${host._id}`}>
                     <button className={`${styles.button} ${styles.view}`}>
                       View
                     </button>
